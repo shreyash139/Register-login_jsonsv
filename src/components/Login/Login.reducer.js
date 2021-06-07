@@ -1,4 +1,4 @@
-import { LOGIN_INIT, LOGIN_SUCCESS, LOGIN_FAILURE } from './Login.constants';
+import { LOGIN_INIT, LOGOUT_INIT, LOGIN_SUCCESS, LOGIN_FAILURE } from './Login.constants';
 
 const DEFAULT_STATE = {
   loading: false,
@@ -25,6 +25,9 @@ const LoginReducer = (state = DEFAULT_STATE, action) => {
     case LOGIN_FAILURE: {
       const errors = transformErrors(action.payload);
       return { ...state, loading: false, data: {}, errors };
+    }
+    case LOGOUT_INIT:{
+       return { ...state, loading: false, data: {}, errors: null};
     }
     default:
       return state;

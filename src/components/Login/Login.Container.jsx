@@ -3,27 +3,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import LoginWrapper from './Login.wrapper';
-import { performLogin } from './Login.actions';
+import {performLogin} from './Login.actions';
 
 class LoginContainer extends PureComponent {
-  componentDidMount() {
-    const { actions } = this.props;
-    actions.login({ email: 'ankit@gmail.com', password: 'password' });
-  }
+  // componentDidMount() {
+  //   const { actions } = this.props;
+  //   actions.login({ username: 'ankit@gmail.com', password: 'password' });
+  // }
 
   render() {
-    return <LoginWrapper />;
+    const { actions,data } = this.props;
+    return <LoginWrapper data={data} actions={actions} />;
   }
 }
 
 const mapStateToProps = state => ({
   loading: state.login.loading,
+  data: state.login.data,
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    login: loginDetails => {
-      return dispatch(performLogin(loginDetails));
+    loginS: loginDetails => {
+      return dispatch(performLogin(loginDetails));      
     },
   },
 });

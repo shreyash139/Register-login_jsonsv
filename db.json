@@ -1,0 +1,14 @@
+{
+  "regs": [
+    {
+      "username": "112",
+      "password": "12",
+      "id": 1
+    },
+    {
+      "username": "Shreyash",
+      "password": "1234",
+      "id": 2
+    }
+  ]
+}

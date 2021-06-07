@@ -6,15 +6,29 @@ const LoginContainer = React.lazy(() =>
   ),
 );
 
+const DashboardContainer = React.lazy(() =>
+  import(
+    'components/Dashboard/Dashboard.Container' /* webpackChunkName: "Login.Container" */
+  ),
+);
+
+const Register = React.lazy(() =>
+  import(
+    'components/Register/Register.Container' /* webpackChunkName: "Login.Container" */
+  ),
+);
+
+
 const appRoutes = {
   root: {
     defaultRoute: {
-      path: '/',
-      component: LoginContainer,
+      path: '/dashboard',
+      component: DashboardContainer,
       needAuth: true,
       exact: true,
     },
   },
+  
   authentication: {
     login: {
       path: '/login',
@@ -22,10 +36,16 @@ const appRoutes = {
       needAuth: false,
       exact: false,
     },
+    register: {
+      path: '/register',
+      component: Register,
+      needAuth: false,
+      exact: false,
+    },
   },
 };
 
-const defaultAuthenticatedRoute = '/';
+const defaultAuthenticatedRoute = '/dashboard';
 const defaultUnauthenticatedRoute = '/login';
 
 const getAllRoutesArray = () =>
